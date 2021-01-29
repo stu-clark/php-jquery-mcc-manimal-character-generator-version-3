@@ -6,14 +6,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 	<meta charset="UTF-8">
-	<meta name="description" content="Mutant Crawl Classics mutant Character Generator. Goblinoid Games.">
+	<meta name="description" content="Mutant Crawl Classics manimal Character Generator. Goblinoid Games.">
 	<meta name="keywords" content="Mutant Crawl Classics, Goblinoid Games,HTML5,CSS,JavaScript">
 	<meta name="author" content="Mark Tasaka 2021">
     
     <link rel="icon" href="../../../images/favicon/favicon.png" type="image/png" sizes="16x16"> 
 		
 
-	<link rel="stylesheet" type="text/css" href="css/mutant.css">
+	<link rel="stylesheet" type="text/css" href="css/manimal.css">
     
     
     <script type="text/javascript" src="./js/modifiers.js"></script>
@@ -222,10 +222,10 @@
 
         if(isset($_POST['theRandomMutuations']) && $_POST['theRandomMutuations'] == 1) 
         {
-            $dieRollPhysicalMutations = rand(1, 3);
+            $dieRollPhysicalMutations = rand(1, 2);
             $physicalMutationTotal = $dieRollPhysicalMutations;
 
-            $dieRollMentalMutations = rand(1, 2);
+            $dieRollMentalMutations = 1;
             $mentalMutationTotal = $dieRollMentalMutations;
 
             $defectMutationTotal = 0;
@@ -683,15 +683,9 @@
 
     $artifactCheckBonusPlusInt = $artifactCheckBonus + $intelligenceMod;
 
-    $mutantHorrorBonus = getMutantHorrorBonus($level);
-
-    $mutantHorrorPart1 = getMutantHorrorPart1($level);
-    $mutantHorrorPart2 = getMutantHorrorPart2($level);
-
-
     $profession = getProfession();
 
-    $zeroLvMutantAppearance = getMutantAppearance();
+    $zeroLvMutantAppearance = getManimalAppearance();
 
     
     
@@ -752,17 +746,12 @@
        </span>
 
        
-       <span id="mutantHorrorBonus">
-           <?php
-                echo $mutantHorrorBonus;
-           ?>
-        </span>
 
 
         <span id="maxTech"></span>
 
        
-       <span id="class">Mutant</span>
+       <span id="class">Manimal</span>
        
        <span id="armourClass"></span>
 
@@ -1096,7 +1085,7 @@
 
 	  
 	/*
-	 Character() - mutant Character Constructor
+	 Character() - Manimal Character Constructor
 	*/
 	function Character() {
         
@@ -1120,10 +1109,6 @@
         let bonusLanguages = fnAddLanguages(intelligenceMod, birthAugur, luckMod);
         let mutationACAdjustment = <?php echo $mutantACAdj ?>;
 	    let baseAC = getBaseArmourClass(agilityMod) + adjustAC(birthAugur, luckMod) + mutationACAdjustment;
-        let mutantHorrorInitPart2 =  <?php echo $mutantHorrorPart2 ?>;
-        let mutantInitAdjust2 = <?php echo $mutantInitAdj ?>;
-        let initBase = mutantHorrorInitPart2 + mutantInitAdjust2 + agilityMod + adjustInit(birthAugur, luckMod);
-        let mutantInitBonus2 = addModifierSign(initBase);
 
 		let mutantCharacter = {
 			"strength": strength,
@@ -1142,7 +1127,7 @@
 			"luckySign": birthAugur.luckySign,
             "luckyRoll": birthAugur.luckyRoll,
             "move": <?php echo $speed ?> + addLuckToSpeed (birthAugur, luckMod),
-            "addLanguages": "Nu-Speak" + bonusLanguages,
+            "addLanguages": "Nu-Speak, Genotype Dialect Language" + bonusLanguages,
             "armourClass": <?php echo $totalAcDefense ?> + baseAC,
             "hp": getHitPoints (level, staminaMod) + hitPointAdjustPerLevel(birthAugur,  luckMod),
 			"melee": strengthMod + <?php echo $meleeAttack ?> + meleeAdjust(birthAugur, luckMod),
@@ -1153,7 +1138,7 @@
             "reflex": <?php echo $reflexBase ?> + agilityMod + adjustRef(birthAugur, luckMod),
             "fort": <?php echo $fortBase ?> + staminaMod + adjustFort(birthAugur,luckMod),
             "will": <?php echo $willBase ?> + personalityMod + adjustWill(birthAugur, luckMod),
-            "initiative": '<?php echo 'd20+' . $mutantHorrorPart1 ?>' + mutantInitBonus2
+            "initiative": agilityMod + adjustInit (birthAugur,luckMod)
 
 		};
 	    if(mutantCharacter.hitPoints <= 0 ){
@@ -1166,7 +1151,7 @@
 
 
   
-       let imgData = "images/mutant.png";
+       let imgData = "images/manimal.png";
       
         $("#character_sheet").attr("src", imgData);
       
@@ -1210,7 +1195,7 @@
       $("#fort").html(addModifierSign(data.fort));
       $("#will").html(addModifierSign(data.will));
       
-      $("#initiative").html(data.initiative);
+      $("#initiative").html(addModifierSign(data.initiative));
       
       $("#speed").html(data.move + "'");
       

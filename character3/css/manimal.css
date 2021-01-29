@@ -360,14 +360,14 @@ body{
 }
 
 
-#initiative{
+#artifactCheck{
     position:absolute;
-    top: 500px;
-    left: 660px;
+    top: 510px;
+    left: 670px;
     font-size: 1em;
 }
 
-#artifactCheck{
+#initiative{
     position:absolute;
     top: 395px;
     left: 710px;
@@ -377,10 +377,10 @@ body{
 
 #zeroLvMutantAppearance{
     position:absolute;
-    top: 890px;
-    left: 50px;
+    top: 870px;
+    left: 690px;
     font-size: 0.8em;
-    width: 260px;
+    width: 240px;
 }
 
 
@@ -433,8 +433,8 @@ body{
     position:absolute;
     top: 810px;
     left: 50px;
-    font-size: 0.8em;
-    width: 260px;
+    font-size: 0.7em;
+    width: 270px;
 }
 
 
