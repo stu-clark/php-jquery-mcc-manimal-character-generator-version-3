@@ -3,7 +3,18 @@ Designed with PHP and jQuery, the Mutant Crawl Classics Manimal Character Genera
 
 --------------------------------
 
+Live version of the Mutant Crawl Classics (MCC) Manimal Character Generator Version 3 is found at:
 
+Artifacts of the Ancient Ones: A Mutant Crawl Classics Fan Site
+
+https://www.oldschooladventures.org/mcc/classes/manimal/
+
+-------------------------------------
+
+
+Update 1.02: 2021-00-01
+
+MCC Manimal Generator Launch Page has been added.
 
 Update 1.01: 2021-01-29
 
