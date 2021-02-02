@@ -12,7 +12,7 @@ https://www.oldschooladventures.org/mcc/classes/manimal/
 -------------------------------------
 
 
-Update 1.02: 2021-00-01
+Update 1.02: 2021-02-01
 
 MCC Manimal Generator Launch Page has been added.
 
