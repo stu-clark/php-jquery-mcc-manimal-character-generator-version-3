@@ -92,7 +92,7 @@
 				<option value="Male" selected>Male</option>
 				<option value="Female">Female</option>
 				<option value="Other">Other</option>
-				<option value="Blank">Blank</option>
+				<option value="">Blank</option>
         </select>
         
         <br/>
